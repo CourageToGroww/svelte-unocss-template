@@ -2,4 +2,4 @@
     import 'uno.css'
 </script>
 
-<div class="text-blue">test</div>
+<div class="">test</div>
