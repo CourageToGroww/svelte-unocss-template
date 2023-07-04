@@ -2,31 +2,23 @@ import { defineConfig } from 'unocss'
 import extractorSvelte from '@unocss/extractor-svelte'
 import presetIcons from '@unocss/preset-icons'
 import presetUno from '@unocss/preset-uno'
-import { presetMini } from '@unocss/preset-mini'
+import presetMini from '@unocss/preset-mini'
 import presetTagify  from '@unocss/preset-tagify'
-import { presetWind } from '@unocss/preset-wind'
+import presetWind  from '@unocss/preset-wind'
 import { FileSystemIconLoader } from '@iconify/utils/lib/loader/node-loaders'
 
 export default defineConfig({
   extractors: [
     extractorSvelte(),
   ],
-  shortcuts: [
-    { logo: 'i-logos:svelte-icon w-6em h-6em transform transition-800 hover:rotate-180' },
-  ],
   presets: [
-    presetUno({
-      importCSS: true,
-      css: `@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap');`,
-      
-    }),
+    presetUno(),
     presetMini(),
     presetTagify(),
     presetWind(),
     presetIcons({
       collections: {
         custom: {
-          // do not remove LF: testing trimCustomSvg on universal icon loader
           circle: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
 <circle cx="60" cy="60" r="50"/>
 </svg>
