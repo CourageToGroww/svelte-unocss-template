@@ -2,9 +2,9 @@ import { defineConfig } from 'unocss'
 import extractorSvelte from '@unocss/extractor-svelte'
 import presetIcons from '@unocss/preset-icons'
 import presetUno from '@unocss/preset-uno'
-import { presetMini } from '@unocss/preset-mini';
-import presetTagify  from '@unocss/preset-tagify';
-import { presetWind } from '@unocss/preset-wind';
+import { presetMini } from '@unocss/preset-mini'
+import presetTagify  from '@unocss/preset-tagify'
+import { presetWind } from '@unocss/preset-wind'
 import { FileSystemIconLoader } from '@iconify/utils/lib/loader/node-loaders'
 
 export default defineConfig({
@@ -15,7 +15,11 @@ export default defineConfig({
     { logo: 'i-logos:svelte-icon w-6em h-6em transform transition-800 hover:rotate-180' },
   ],
   presets: [
-    presetUno(),
+    presetUno({
+      importCSS: true,
+      css: `@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap');`,
+      
+    }),
     presetMini(),
     presetTagify(),
     presetWind(),
@@ -38,5 +42,31 @@ export default defineConfig({
         'vertical-align': 'middle',
       },
     }),
+  ],
+  theme: {
+    extend: {
+      backgroundImage: {
+      },
+      colors: {
+      },
+      fontFamily: {
+        'chakra': ['Chakra Petch', 'sans-serif'],
+      },
+    },
+  },
+  rules: [
+    [/^btn-glass-effect$/, () => ({
+      'background': 'rgba(0, 0, 0, .20)', //the last number is the opacity
+      'border-radius': '5px',
+      'box-shadow': '0 4px 6px 0 rgba(0, 0, 0, 0.07)',
+      'shadow-lg': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+
+    })],
+    [/^glass-effect$/, () => ({
+      'background': 'rgba(0, 0, 0, .20)', //the last number is the opacity
+      'box-shadow': '0 4px 6px 0 rgba(0, 0, 0, 0.07)',
+      'shadow-lg': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+
+    })],
   ],
 })
